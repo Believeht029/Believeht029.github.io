@@ -59,6 +59,22 @@
         transform: scale(1.02);
         box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.16);
       }
+      .page__footer {
+        margin-top: 1.5em;
+        padding: 0.6em 0;
+        border-top: 1px solid #e6e6e6;
+        color: #666;
+        font-size: 0.9em;
+        line-height: 1.4;
+        text-align: center;
+        position: static !important;
+        clear: both;
+        background: transparent;
+        box-shadow: none;
+      }
+      .page__footer p {
+        margin: 0.2em 0;
+      }
     </style>
     <meta http-equiv="cleartype" content="on">
     <base target="_blank">
@@ -254,6 +270,9 @@
         </div>
       </article>
     </div>
+    <footer class="page__footer">
+      <p>Copyright © 2026 Ting Huang. All rights reserved. Last updated: <time id="last-updated" datetime="">2026-02-03</time></p>
+    </footer>
     <script src="assets/js/vendor/jquery/jquery-1.12.4.min.js"></script>
     <script src="assets/js/main.min.js"></script>
     <script>
@@ -267,7 +286,7 @@
         ticker.appendChild(clone);
 
         var listHeight = list.offsetHeight;
-        var speedMs = 30;
+        var speedMs = 60;
         var stepPx = 1;
 
         function shouldScroll() {
@@ -300,6 +319,21 @@
         window.addEventListener('resize', function () {
           listHeight = list.offsetHeight;
         });
+      })();
+      (function () {
+        var lastUpdatedEl = document.getElementById('last-updated');
+        if (!lastUpdatedEl) return;
+
+        var lastModified = new Date(document.lastModified);
+        if (isNaN(lastModified.getTime())) return;
+
+        var year = lastModified.getFullYear();
+        var month = String(lastModified.getMonth() + 1).padStart(2, '0');
+        var day = String(lastModified.getDate()).padStart(2, '0');
+        var formatted = year + '-' + month + '-' + day;
+
+        lastUpdatedEl.textContent = formatted;
+        lastUpdatedEl.setAttribute('datetime', formatted);
       })();
     </script>
   </body>
