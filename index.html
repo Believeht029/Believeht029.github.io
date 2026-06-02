@@ -20,7 +20,7 @@
     <style>
       .news-ticker {
         max-height: 9.5em;
-        overflow: hidden;
+        overflow: auto;
         position: relative;
       }
       .news-ticker ul {
@@ -28,9 +28,6 @@
       }
       .news-ticker li {
         margin-bottom: 0.5em;
-      }
-      .news-ticker.is-paused {
-        overflow: auto;
       }
       .paper-box {
         position: relative;
@@ -278,50 +275,6 @@
     <script src="assets/js/vendor/jquery/jquery-1.12.4.min.js"></script>
     <script src="assets/js/main.min.js"></script>
     <script>
-      (function () {
-        var ticker = document.getElementById('news-ticker');
-        var list = document.getElementById('news-list');
-        if (!ticker || !list) return;
-
-        var clone = list.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        ticker.appendChild(clone);
-
-        var listHeight = list.offsetHeight;
-        var speedMs = 60;
-        var stepPx = 1;
-
-        function shouldScroll() {
-          return listHeight > ticker.clientHeight;
-        }
-
-        function tick() {
-          if (!ticker.classList.contains('is-paused') && shouldScroll()) {
-            ticker.scrollTop += stepPx;
-            if (ticker.scrollTop >= listHeight) {
-              ticker.scrollTop = 0;
-            }
-          }
-        }
-
-        var timer = setInterval(tick, speedMs);
-
-        function pause() {
-          ticker.classList.add('is-paused');
-        }
-
-        function resume() {
-          ticker.classList.remove('is-paused');
-        }
-
-        ticker.addEventListener('mouseenter', pause);
-        ticker.addEventListener('mouseleave', resume);
-        ticker.addEventListener('focusin', pause);
-        ticker.addEventListener('focusout', resume);
-        window.addEventListener('resize', function () {
-          listHeight = list.offsetHeight;
-        });
-      })();
       (function () {
         var lastUpdatedEl = document.getElementById('last-updated');
         if (!lastUpdatedEl) return;
