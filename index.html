@@ -98,8 +98,8 @@
       }
       .paper-box {
         position: relative;
-        gap: 1.7em;
-        padding: 2em 0;
+        gap: 1.35em;
+        padding: 1.25em 0;
         border-bottom: 1px solid var(--line);
         transition: background-color 0.2s ease;
       }
@@ -124,7 +124,8 @@
         display: block;
         max-width: 100%;
         width: 100%;
-        aspect-ratio: 16 / 10;
+        height: auto;
+        max-height: 300px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fff;
@@ -241,9 +242,9 @@
       }
       @media (min-width: 48em) {
         .paper-box .paper-box-image {
-          flex: 0 0 36%;
+          flex: 0 0 34%;
           min-width: 0;
-          max-width: 36%;
+          max-width: 34%;
         }
         .paper-box .paper-box-text {
           flex: 1;
@@ -263,6 +264,11 @@
         }
         .paper-box {
           gap: 1em;
+          padding: 1em 0;
+        }
+        .paper-box .paper-box-image img,
+        .paper-box .paper-box-image video {
+          max-height: none;
         }
         .author__urls_sm a {
           display: inline-flex;
