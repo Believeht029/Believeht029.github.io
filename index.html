@@ -31,6 +31,9 @@
       html {
         scroll-behavior: smooth;
       }
+      [id] {
+        scroll-margin-top: 5rem;
+      }
       body,
       h1, h2, h3, h4, h5, h6,
       .sidebar p,
@@ -41,6 +44,7 @@
       body {
         color: var(--ink);
         line-height: 1.65;
+        background: #fbfcfe;
       }
       a {
         color: var(--accent);
@@ -65,6 +69,21 @@
       }
       .intro p:last-child {
         margin-bottom: 0;
+      }
+      .research-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.48em;
+        margin-top: 0.85em;
+      }
+      .research-tags span {
+        padding: 0.26em 0.7em;
+        border: 1px solid #d7dee8;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        color: #596270;
+        font-size: 0.82em;
+        font-weight: 600;
       }
       .venue {
         color: #dd0000;
@@ -93,23 +112,55 @@
         display: grid;
         grid-template-columns: 5.2em minmax(0, 1fr);
         gap: 0.7em;
-        margin-bottom: 0.65em;
+        margin-bottom: 0;
       }
       .news-date {
         color: var(--muted);
         font-variant-numeric: tabular-nums;
         font-weight: 600;
+        padding-top: 0.52em;
+      }
+      .news-ticker li > span:last-child {
+        position: relative;
+        padding: 0.48em 0 0.72em 1.05em;
+        border-left: 1px solid #dce3ec;
+      }
+      .news-ticker li > span:last-child::before {
+        position: absolute;
+        top: 0.95em;
+        left: -0.28em;
+        width: 0.48em;
+        height: 0.48em;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 1px #b9c7da;
+        content: "";
       }
       .paper-box {
         position: relative;
         gap: 1.35em;
-        padding: 1.25em 0;
+        margin: 0 -0.7em;
+        padding: 1.25em 0.7em;
         border-bottom: 1px solid var(--line);
-        transition: background-color 0.2s ease;
+        border-radius: 10px;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
       }
       .paper-box:hover,
       .paper-box:focus-within {
         background-color: var(--surface);
+      }
+      .paper-box--selected {
+        border-bottom-color: #d7e1ef;
+      }
+      .paper-kicker {
+        display: inline-flex;
+        margin-bottom: 0.38em;
+        color: var(--accent);
+        font-size: 0.72em;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
       .paper-box .paper-box-image {
         position: relative;
@@ -190,6 +241,15 @@
         font-weight: 700;
         letter-spacing: 0.02em;
       }
+      .badge--preprint {
+        border: 1px solid #cfd7e2;
+        background: rgba(255, 255, 255, 0.94);
+        color: #5f6875;
+      }
+      .badge--venue {
+        background: #244f91;
+        box-shadow: 0 4px 12px rgba(36, 79, 145, 0.18);
+      }
       .page__footer {
         margin-top: 1.5em;
         padding: 0.6em 0;
@@ -230,8 +290,10 @@
       }
       .author__avatar img {
         aspect-ratio: 1;
+        border-color: #dde3eb;
         object-fit: cover;
         object-position: center top;
+        box-shadow: 0 8px 24px rgba(37, 50, 70, 0.1);
       }
       .research-focus {
         white-space: normal;
@@ -239,6 +301,30 @@
         color: var(--ink);
         font-weight: 600;
         line-height: 1.45;
+      }
+      .masthead {
+        border-bottom-color: rgba(220, 226, 234, 0.9);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .greedy-nav,
+      .greedy-nav .hidden-links {
+        background: transparent;
+      }
+      .greedy-nav .visible-links a::before {
+        height: 2px;
+        background: var(--accent);
+      }
+      .greedy-nav a.is-active {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .greedy-nav .visible-links a.is-active::before {
+        transform: scaleX(1);
+      }
+      .paper-box video {
+        cursor: pointer;
       }
       .section-list {
         padding-left: 1.2em;
@@ -259,6 +345,15 @@
           max-width: none;
         }
       }
+      @media (min-width: 57.8125em) {
+        .profile_box {
+          padding: 0.85em;
+          border: 1px solid #e4e8ef;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.82);
+          box-shadow: 0 10px 30px rgba(45, 58, 76, 0.055);
+        }
+      }
       @media (min-width: 80em) {
         #main,
         .masthead__inner-wrap {
@@ -268,7 +363,10 @@
       @media (max-width: 47.99em) {
         .news-ticker li {
           grid-template-columns: 1fr;
-          gap: 0.12em;
+          gap: 0;
+        }
+        .news-ticker li > span:last-child {
+          margin-left: 0.2em;
         }
         .paper-box {
           gap: 1em;
@@ -309,7 +407,6 @@
           <nav id="site-nav" class="greedy-nav">
             <button type="button" aria-label="Open navigation menu"><div class="navicon"></div></button>
             <ul class="visible-links">
-              <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item"><a href="#about-me">Homepage</a></li>
               <li class="masthead__menu-item"><a href="#about-me">About Me</a></li>
               <li class="masthead__menu-item"><a href="#news">News</a></li>
               <li class="masthead__menu-item"><a href="#publications">Publications</a></li>
@@ -358,10 +455,14 @@
         <div class="page__inner-wrap">
           <section class="page__content" id="main-content" itemprop="text">
             <h1 class="visually-hidden">Ting Huang</h1>
-            <span class="anchor" id="about-me"></span>
-            <div class="intro">
+            <div class="intro" id="about-me">
               <p>I am Ting Huang, a visiting researcher in Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University. I received my M.S. from Shanghai University of Engineering Science (SUES) and work on embodied AI.</p>
               <p>My research focuses on spatial intelligence and generalist embodied systems, including 3D vision-language and vision-language-action (VLA) models for mobile robots. My long-term goal is to build systems that understand and interact with the physical world. Outside research, I enjoy sports and music.</p>
+              <div class="research-tags" aria-label="Research areas">
+                <span>Spatial Intelligence</span>
+                <span>Embodied AI</span>
+                <span>Generalist Robotics</span>
+              </div>
             </div>
             <h1 id="news">🔥 News</h1>
             <div class="news-ticker" id="news-ticker">
@@ -379,10 +480,11 @@
             </ul>
             </div>
             <h1 id="publications">📝 Publications</h1>
+            <div class="publication-list" id="publication-list">
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">arXiv Preprint</div>
+                  <div class="badge badge--preprint">arXiv Preprint</div>
                   <img src="images/3dcocav2.webp" alt="3D CoCa v2 method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
@@ -395,16 +497,17 @@
                 </ul>
               </div>
             </div>
-            <div class="paper-box">
+            <div class="paper-box paper-box--selected">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">ECCV 2026</div>
-                  <video autoplay muted loop playsinline preload="metadata" aria-label="MobileVLA-R1 demonstration video">
+                  <div class="badge badge--venue">ECCV 2026</div>
+                  <video muted loop playsinline preload="metadata" tabindex="0" aria-label="MobileVLA-R1 demonstration video; click to pause or play">
                     <source src="video/mobilevla.mp4" type="video/mp4">
                   </video>
                 </div>
               </div>
               <div class="paper-box-text">
+                <div class="paper-kicker">Selected Publication</div>
                 <p class="paper-title"><a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</a></p>
                 <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, Dongjian Li<sup>★</sup>, Rui Yang<sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Zida Yang, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
                 <p><a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a></p>
@@ -418,8 +521,8 @@
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">arXiv Preprint</div>
-                  <video autoplay muted loop playsinline preload="metadata" aria-label="Nav-R1 demonstration video">
+                  <div class="badge badge--preprint">arXiv Preprint</div>
+                  <video muted loop playsinline preload="metadata" tabindex="0" aria-label="Nav-R1 demonstration video; click to pause or play">
                     <source src="video/navr1.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -437,7 +540,7 @@
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">arXiv Preprint</div>
+                  <div class="badge badge--preprint">arXiv Preprint</div>
                   <img src="images/3d-r1.webp" alt="3D-R1 method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
@@ -451,14 +554,15 @@
                 </ul>
               </div>
             </div>
-            <div class="paper-box">
+            <div class="paper-box paper-box--selected">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">3DV 2026</div>
+                  <div class="badge badge--venue">3DV 2026</div>
                   <img src="images/3dcoca_main.webp" alt="3D CoCa method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="paper-box-text">
+                <div class="paper-kicker">Selected Publication</div>
                 <p class="paper-title"><a href="https://arxiv.org/pdf/2504.09518">3D CoCa: Contrastive Learners are 3D Captioners</a></p>
                 <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Yemin Wang<sup>★</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
                 <p><a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="3D CoCa GitHub stars"></a></p>
@@ -467,6 +571,7 @@
                   <li>Proposes <strong>3D CoCa</strong>, a unified framework that jointly performs contrastive 3D-text alignment and 3D caption generation within one architecture, instead of relying on a two-stage "proposal-then-caption" pipeline.</li>
                 </ul>
               </div>
+            </div>
             </div>
             <h1 id="awards">🥇 Awards <span class="ampersand">&amp;</span> Scholarships</h1>
             <ul class="section-list">
@@ -529,6 +634,69 @@
           });
           window.addEventListener('resize', updateNavigation);
           updateNavigation();
+        }
+
+        var sectionIds = ['about-me', 'news', 'publications', 'awards', 'education', 'academic-services'];
+        var navAnchors = Array.prototype.slice.call(document.querySelectorAll('#site-nav a[href^="#"]'));
+
+        function updateActiveNavigation() {
+          var currentSection = sectionIds[0];
+          sectionIds.forEach(function (sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section && section.getBoundingClientRect().top <= 150) currentSection = sectionId;
+          });
+          navAnchors.forEach(function (link) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + currentSection);
+          });
+        }
+
+        navAnchors.forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (hiddenLinks) hiddenLinks.classList.add('hidden');
+            if (menuButton) {
+              menuButton.classList.remove('close');
+              menuButton.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+        window.addEventListener('scroll', updateActiveNavigation, { passive: true });
+        updateActiveNavigation();
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var paperVideos = Array.prototype.slice.call(document.querySelectorAll('.paper-box video'));
+        var publicationList = document.getElementById('publication-list');
+
+        if (publicationList) {
+          var firstPreprint = publicationList.querySelector('.paper-box:not(.paper-box--selected)');
+          Array.prototype.slice.call(publicationList.querySelectorAll('.paper-box--selected')).forEach(function (paper) {
+            publicationList.insertBefore(paper, firstPreprint);
+          });
+        }
+
+        function toggleVideo(video) {
+          if (video.paused) video.play().catch(function () {});
+          else video.pause();
+        }
+
+        paperVideos.forEach(function (video) {
+          video.title = 'Click to pause or play';
+          video.addEventListener('click', function () { toggleVideo(video); });
+          video.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              toggleVideo(video);
+            }
+          });
+        });
+
+        if ('IntersectionObserver' in window) {
+          var videoObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting && !reduceMotion) entry.target.play().catch(function () {});
+              else entry.target.pause();
+            });
+          }, { threshold: 0.55 });
+          paperVideos.forEach(function (video) { videoObserver.observe(video); });
         }
 
         document.querySelectorAll('a[href]').forEach(function (link) {
