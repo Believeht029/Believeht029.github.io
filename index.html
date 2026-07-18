@@ -129,7 +129,6 @@
         max-width: 100%;
         width: 100%;
         height: auto;
-        max-height: 300px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fff;
@@ -245,6 +244,11 @@
         padding-left: 1.2em;
       }
       @media (min-width: 48em) {
+        .paper-box .paper-box-image img,
+        .paper-box .paper-box-image video {
+          height: 260px;
+          max-height: 260px;
+        }
         .paper-box .paper-box-image {
           flex: 0 0 34%;
           min-width: 0;
@@ -269,10 +273,6 @@
         .paper-box {
           gap: 1em;
           padding: 1em 0;
-        }
-        .paper-box .paper-box-image img,
-        .paper-box .paper-box-image video {
-          max-height: none;
         }
         .author__urls_sm a {
           display: inline-flex;
