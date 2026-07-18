@@ -9,6 +9,8 @@
     <meta property="og:title" content="Ting Huang">
     <meta property="og:description" content="Spatial Intelligence and Generalist Robotics">
     <meta property="og:url" content="https://believeht029.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://believeht029.github.io/">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -18,43 +20,150 @@
     </script>
     <link rel="stylesheet" href="assets/css/main.css">
     <style>
+      :root {
+        --ink: #172033;
+        --muted: #687386;
+        --accent: #244f91;
+        --accent-soft: #edf3fb;
+        --line: #e6eaf0;
+        --surface: #f8fafc;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body,
+      h1, h2, h3, h4, h5, h6,
+      .sidebar p,
+      .sidebar li,
+      .author__urls-wrapper {
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      body {
+        color: var(--ink);
+        line-height: 1.65;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 0.16em;
+      }
+      .page__content h1 {
+        margin-top: 2.25em;
+        padding-bottom: 0.45em;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 1.42em;
+        letter-spacing: -0.025em;
+      }
+      .intro {
+        max-width: 760px;
+        color: #344054;
+        font-size: 1.04em;
+      }
       .news-ticker {
-        max-height: 9.5em;
+        max-height: 12.5em;
         overflow: auto;
         position: relative;
+        padding-right: 0.75em;
+        scrollbar-color: #c7ced8 transparent;
+        scrollbar-width: thin;
       }
       .news-ticker ul {
         margin: 0;
+        padding-left: 0;
+        list-style: none;
       }
       .news-ticker li {
-        margin-bottom: 0.5em;
+        display: grid;
+        grid-template-columns: 5.2em minmax(0, 1fr);
+        gap: 0.7em;
+        margin-bottom: 0.65em;
+      }
+      .news-date {
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
       }
       .paper-box {
         position: relative;
-        z-index: 1;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-        will-change: transform;
+        gap: 1.7em;
+        padding: 2em 0;
+        border-bottom: 1px solid var(--line);
+        transition: background-color 0.2s ease;
       }
       .paper-box:hover,
       .paper-box:focus-within {
-        background-color: #f7f9fc;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-        z-index: 5;
+        background-color: var(--surface);
       }
       .paper-box .paper-box-image {
         position: relative;
       }
       .paper-box .badge {
-        z-index: 6;
+        z-index: 2;
       }
-      .paper-box .paper-box-image img {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      .paper-box .paper-box-image img,
+      .paper-box .paper-box-image video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: none;
+        object-fit: cover;
       }
-      .paper-box:hover .paper-box-image img,
-      .paper-box:focus-within .paper-box-image img {
-        transform: scale(1.02);
-        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.16);
+      .paper-box .paper-box-text {
+        padding-left: 0;
+      }
+      .paper-title {
+        margin: 0 0 0.55em;
+        font-size: 1.12em;
+        font-weight: 700;
+        line-height: 1.4;
+        letter-spacing: -0.015em;
+      }
+      .paper-title a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .paper-title a:hover {
+        color: var(--accent);
+      }
+      .paper-authors {
+        color: #465267;
+        line-height: 1.55;
+      }
+      .paper-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45em;
+        margin: 0.8em 0;
+      }
+      .paper-links a {
+        padding: 0.28em 0.68em;
+        border: 1px solid #ccd7e6;
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 0.84em;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .paper-links a:hover {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .paper-summary {
+        margin-bottom: 0;
+        padding-left: 1.15em;
+        color: var(--muted);
+        font-size: 0.94em;
+      }
+      .badge {
+        margin: 0.7em 0 0 -0.45em;
+        padding: 0.3em 0.72em;
+        border-radius: 999px;
+        background: var(--accent);
+        font-size: 0.72em;
+        font-weight: 700;
+        letter-spacing: 0.02em;
       }
       .page__footer {
         margin-top: 1.5em;
@@ -72,32 +181,88 @@
       .page__footer p {
         margin: 0.2em 0;
       }
+      .social-mark--rednote {
+        display: inline-flex;
+        width: 1.45em;
+        height: 1.45em;
+        margin-right: 0.28em;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid currentColor;
+        border-radius: 0.38em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.72em;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        vertical-align: 0.08em;
+      }
+      .author__urls_sm .social-mark--rednote {
+        margin-right: 0;
+      }
+      .author__bio {
+        color: var(--muted);
+      }
+      .author__avatar img {
+        aspect-ratio: 1;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .research-focus {
+        white-space: normal;
+        margin-bottom: 1em;
+        color: #39465a;
+        font-weight: 600;
+        line-height: 1.45;
+      }
+      .section-list {
+        padding-left: 1.2em;
+      }
+      @media (min-width: 48em) {
+        .paper-box .paper-box-image {
+          flex: 0 0 36%;
+          min-width: 0;
+          max-width: 36%;
+        }
+        .paper-box .paper-box-text {
+          flex: 1;
+          max-width: none;
+        }
+      }
+      @media (max-width: 47.99em) {
+        .news-ticker li {
+          grid-template-columns: 1fr;
+          gap: 0.12em;
+        }
+        .paper-box {
+          gap: 1em;
+        }
+        .author__urls_sm a {
+          display: inline-flex;
+          min-width: 42px;
+          min-height: 42px;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; }
+      }
     </style>
     <meta http-equiv="cleartype" content="on">
-    <base target="_blank">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="images/site.webmanifest">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="msapplication-TileImage" content="images/mstile-144x144.png?v=M44lzPylqQ">
-    <meta name="msapplication-config" content="images/browserconfig.xml?v=M44lzPylqQ">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="assets/css/academicons.css">
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
-    </script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true
-        }
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML" async></script>
   </head>
   <body>
+    <a class="screen-reader-shortcut" href="#main-content">Skip to main content</a>
     <!--[if lt IE 9]>
     <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
     <![endif]-->
@@ -105,15 +270,15 @@
       <div class="masthead__inner-wrap">
         <div class="masthead__menu">
           <nav id="site-nav" class="greedy-nav">
-            <button><div class="navicon"></div></button>
+            <button type="button" aria-label="Open navigation menu"><div class="navicon"></div></button>
             <ul class="visible-links">
               <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item"><a href="#about-me">Homepage</a></li>
               <li class="masthead__menu-item"><a href="#about-me">About Me</a></li>
-              <li class="masthead__menu-item"><a href="#-news">News</a></li>
-              <li class="masthead__menu-item"><a href="#-publications">Publications</a></li>
-              <li class="masthead__menu-item"><a href="#-awards-and-scholarships">Awards and Scholarships</a></li>
-              <li class="masthead__menu-item"><a href="#-educations">Educations</a></li>
-              <li class="masthead__menu-item"><a href="#-academic-services">Academic Services</a></li>
+              <li class="masthead__menu-item"><a href="#news">News</a></li>
+              <li class="masthead__menu-item"><a href="#publications">Publications</a></li>
+              <li class="masthead__menu-item"><a href="#awards">Awards</a></li>
+              <li class="masthead__menu-item"><a href="#education">Education</a></li>
+              <li class="masthead__menu-item"><a href="#academic-services">Academic Services</a></li>
             </ul>
             <ul class="hidden-links hidden"></ul>
           </nav>
@@ -124,68 +289,71 @@
       <div class="sidebar sticky">
         <div itemscope itemtype="http://schema.org/Person" class="profile_box">
           <div class="author__avatar">
-            <img src="images/android-chrome-192x192.png" class="author__avatar" alt="Ting Huang">
+            <img src="images/tinghuang.png" class="author__avatar" alt="Portrait of Ting Huang">
           </div>
           <div class="author__content">
             <h3 class="author__name">Ting Huang</h3>
-            <p class="author__bio">Visiting Student @PKU</p>
+            <p class="author__bio">Visiting Researcher · Peking University</p>
           </div>
           <div class="author__urls-wrapper">
             <ul class="author__urls social-icons">
-              <li><div style="white-space: normal; margin-bottom: 1em;">Spatial Intelligence and Generalist Robotics</div></li>
+              <li><div class="research-focus">Spatial Intelligence &amp; Generalist Robotics</div></li>
               <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Beijing, China</li>
               <li><a href="mailto:hting247@gmail.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
-              <li><a href="https://github.com/Believeht029"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+              <li><a href="https://github.com/Believeht029"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
               <li><a href="https://x.com/TingHuang0403"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i> X</a></li>
-              <li><a href="https://www.xiaohongshu.com/user/profile/5fbe83350000000001001c78"><i class="fas fa-fw fa-book" aria-hidden="true"></i> 小红书</a></li>
-              <li><a href="https://scholar.google.com/citations?hl=en&user=AMHTHkUAAAAJ&view_op=list_works"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+              <li><a href="https://www.xiaohongshu.com/user/profile/5fbe83350000000001001c78"><span class="social-mark--rednote" aria-hidden="true">R</span> REDnote</a></li>
+              <li><a href="https://scholar.google.com/citations?hl=en&amp;user=AMHTHkUAAAAJ&amp;view_op=list_works"><i class="fas fa-fw fa-graduation-cap" aria-hidden="true"></i> Google Scholar</a></li>
               <li><a href="https://orcid.org/0009-0004-5042-0908"><i class="ai ai-fw ai-orcid" aria-hidden="true"></i> ORCID</a></li>
             </ul>
             <div class="author__urls_sm">
-              <a href="mailto:hting247@gmail.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i></a>
-              <a href="https://github.com/Believeht029"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a>
-              <a href="https://x.com/TingHuang0403"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i></a>
-              <a href="https://www.xiaohongshu.com/user/profile/5fbe83350000000001001c78"><i class="fas fa-fw fa-book" aria-hidden="true"></i></a>
-              <a href="https://scholar.google.com/citations?hl=en&user=AMHTHkUAAAAJ&view_op=list_works"><i class="fas fa-fw fa-graduation-cap"></i></a>
-              <a href="https://orcid.org/0009-0004-5042-0908"><i class="ai ai-fw ai-orcid" aria-hidden="true"></i></a>
+              <a href="mailto:hting247@gmail.com" aria-label="Email"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i></a>
+              <a href="https://github.com/Believeht029" aria-label="GitHub"><i class="fab fa-fw fa-github" aria-hidden="true"></i></a>
+              <a href="https://x.com/TingHuang0403" aria-label="X"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.xiaohongshu.com/user/profile/5fbe83350000000001001c78" aria-label="REDnote"><span class="social-mark--rednote" aria-hidden="true">R</span></a>
+              <a href="https://scholar.google.com/citations?hl=en&amp;user=AMHTHkUAAAAJ&amp;view_op=list_works" aria-label="Google Scholar"><i class="fas fa-fw fa-graduation-cap" aria-hidden="true"></i></a>
+              <a href="https://orcid.org/0009-0004-5042-0908" aria-label="ORCID"><i class="ai ai-fw ai-orcid" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </div>
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
         <div class="page__inner-wrap">
-          <section class="page__content" itemprop="text">
+          <section class="page__content" id="main-content" itemprop="text">
+            <h1 class="visually-hidden">Ting Huang</h1>
             <span class="anchor" id="about-me"></span>
-            <p>I am Ting Huang. I received my M.S. from Shanghai University of Engineering Science (SUES) and am a visiting student in Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University, working on embodied AI.</p>
-            <p>My research focuses on spatial intelligence and generalist embodied systems, including 3D vision-language and vision-language-action (VLA) models for mobile robots, with the long-term goal of building systems that understand and interact with the physical world. Outside research, I enjoy sports and music.</p>
-            <h1 id="-news">🔥 News</h1>
+            <div class="intro">
+              <p>I am Ting Huang, a visiting researcher in Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University. I received my M.S. from Shanghai University of Engineering Science (SUES) and work on embodied AI.</p>
+              <p>My research focuses on spatial intelligence and generalist embodied systems, including 3D vision-language and vision-language-action (VLA) models for mobile robots. My long-term goal is to build systems that understand and interact with the physical world. Outside research, I enjoy sports and music.</p>
+            </div>
+            <h1 id="news">News</h1>
             <div class="news-ticker" id="news-ticker">
             <ul id="news-list">
-              <li><em>2026.06</em>: &nbsp;🎉🎉 Our paper <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="GitHub stars"></a>, ConsiSpace and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="GitHub stars"></a> are accepted to <font color="#dd0000">ECCV 2026</font>.</li>
-              <li><em>2026.05</em>: &nbsp;🎉🎉 Our paper <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a><a href="https://github.com/AIGeeksGroup/DontAbuseRL"><img src="https://badgen.net/github/stars/AIGeeksGroup/DontAbuseRL" alt="GitHub stars"></a> is accepted to <font color="#dd0000">ICML 2026 Position</font>.</li>
-              <li><em>2026.02</em>: &nbsp;🎉🎉 Our paper <a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> is accepted to <font color="#dd0000">ESWA 2026</font>.</li>
-              <li><em>2026.01</em>: &nbsp;💼💼 I started a research internship at <strong><font color="#3559b0">SRI-Robot</font></strong>, working on Embodied AI.</li>
-              <li><em>2026.01</em>: &nbsp;🎉🎉 We release <a href="https://arxiv.org/abs/2601.06496">3D CoCa v2</a> <a href="https://github.com/AIGeeksGroup/3DCoCav2"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCav2" alt="GitHub stars"></a>, a generalizable 3D captioning framework.</li>
-              <li><em>2025.11</em>: &nbsp;🎉🎉 We release <a href="https://arxiv.org/abs/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="GitHub stars"></a>, an embodied model for mobile robots.</li>
-              <li><em>2025.11</em>: &nbsp;🎉🎉 Our paper <a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> <a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="GitHub stars"></a> is accepted to <font color="#dd0000">3DV 2026</font>.</li>
-              <li><em>2025.09</em>: &nbsp;🐧🐧 I joined Professor <a href="https://ha0tang.github.io/">Tang Hao's</a> research group at Peking University as a visiting student, working on Embodied AI.</li>
-              <li><em>2025.09</em>: &nbsp;🎉🎉 We release <a href="https://arxiv.org/abs/2509.10884">Nav-R1</a> <a href="https://github.com/AIGeeksGroup/Nav-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/Nav-R1" alt="GitHub stars"></a>, an embodied foundation model.</li>
-              <li><em>2025.08</em>: &nbsp;🎉🎉 We release <a href="https://arxiv.org/abs/2507.23478">3D-R1</a> <a href="https://github.com/AIGeeksGroup/3D-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/3D-R1" alt="GitHub stars"></a>, an open-source generalist model that enhances the reasoning of 3D VLMs for unified scene understanding.</li>
+              <li><span class="news-date">2026.06</span><span><a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> were accepted to <strong>ECCV 2026</strong>.</span></li>
+              <li><span class="news-date">2026.05</span><span>Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> was accepted to <strong>ICML 2026 Position Papers</strong>.</span></li>
+              <li><span class="news-date">2026.02</span><span><a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong>Expert Systems with Applications</strong>.</span></li>
+              <li><span class="news-date">2026.01</span><span>I started a research internship at <strong>SRI-Robot</strong>, working on embodied AI.</span></li>
+              <li><span class="news-date">2026.01</span><span>We released <a href="https://arxiv.org/abs/2601.06496">3D CoCa v2</a>, a generalizable 3D captioning framework.</span></li>
+              <li><span class="news-date">2025.11</span><span>We released <a href="https://arxiv.org/abs/2511.17889">MobileVLA-R1</a>, an embodied model for mobile robots.</span></li>
+              <li><span class="news-date">2025.11</span><span><a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> was accepted to <strong>3DV 2026</strong>.</span></li>
+              <li><span class="news-date">2025.09</span><span>I joined Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University as a visiting researcher.</span></li>
+              <li><span class="news-date">2025.09</span><span>We released <a href="https://arxiv.org/abs/2509.10884">Nav-R1</a>, an embodied foundation model.</span></li>
+              <li><span class="news-date">2025.08</span><span>We released <a href="https://arxiv.org/abs/2507.23478">3D-R1</a>, an open-source generalist model for unified 3D scene understanding.</span></li>
             </ul>
             </div>
-            <h1 id="-publications">📝 Publications</h1>
+            <h1 id="publications">Publications</h1>
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">ArXiv Pre-print</div>
-                  <img src="images/3dcocav2.png" alt="sym" width="100%">
+                  <div class="badge">arXiv Preprint</div>
+                  <img src="images/3dcocav2.webp" alt="3D CoCa v2 method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="paper-box-text">
-                <p><a href="https://arxiv.org/pdf/2601.06496"><strong><font size="4">3D CoCa v2: Contrastive Learners with Test-Time Search for Generalizable Spatial Intelligence</font></strong></a></p>
-                <p><a href="https://ha0tang.github.io/">Hao Tang</a>$^{\ddagger\star}$, <strong><u>Ting Huang</u></strong>$^\star$, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a>$^{\star}$</p>
-                <p><a href="https://arxiv.org/abs/2601.06496">arXiv</a> | <a href="https://github.com/TH-AI-Lab-PKU/3DCoCav2">code</a></p>
-                <ul>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2601.06496">3D CoCa v2: Contrastive Learners with Test-Time Search for Generalizable Spatial Intelligence</a></p>
+                <p class="paper-authors"><a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡★</sup>, <strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★</sup></p>
+                <p class="paper-links"><a href="https://arxiv.org/abs/2601.06496">Paper</a><a href="https://github.com/TH-AI-Lab-PKU/3DCoCav2">Code</a></p>
+                <ul class="paper-summary">
                   <li>3D CoCa v2 extends 3D CoCa with an inference-only test-time search (TTS) module and an external LLM judge.</li>
                 </ul>
               </div>
@@ -194,15 +362,16 @@
               <div class="paper-box-image">
                 <div>
                   <div class="badge">ECCV 2026</div>
-                  <img src="images/mobilevla-r1.png" alt="sym" width="100%">
+                  <video autoplay muted loop playsinline preload="metadata" aria-label="MobileVLA-R1 demonstration video">
+                    <source src="video/mobilevla.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
               <div class="paper-box-text">
-                <p><a href="https://arxiv.org/pdf/2511.17889"><strong><font size="4">MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</font></strong></a></p>
-                <p><strong><font color="#dd0000">ECCV 2026</font></strong> | <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="GitHub stars"></a><br>
-                <p><strong><u>Ting Huang</u></strong>$^\star$, Dongjian Li$^\star$, Rui Yang$^\star$, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a>$^{\star\dagger}$, Zida Yang, <a href="https://ha0tang.github.io/">Hao Tang</a>$^\ddagger$</p>
-                <p><a href="https://aigeeksgroup.github.io/MobileVLA-R1/">project</a> | <a href="https://arxiv.org/abs/2511.17889">arXiv</a> | <a href="https://github.com/AIGeeksGroup/MobileVLA-R1">code</a> | <a href="https://mp.weixin.qq.com/s/d9y8Rchx7ZHqfIEIwfmy4A">AI Era</a> | <a href="https://x.com/_akhaliq/status/1993983918551322807">AK</a></p>
-                <ul>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</a></p>
+                <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, Dongjian Li<sup>★</sup>, Rui Yang<sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Zida Yang, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p class="paper-links"><a href="https://aigeeksgroup.github.io/MobileVLA-R1/">Project</a><a href="https://arxiv.org/abs/2511.17889">Paper</a><a href="https://github.com/AIGeeksGroup/MobileVLA-R1">Code</a><a href="https://mp.weixin.qq.com/s/d9y8Rchx7ZHqfIEIwfmy4A">Media</a></p>
+                <ul class="paper-summary">
                   <li>MobileVLA-R1 bridges language-guided high-level reasoning and continuous low-level control for mobile robots.</li>
                   <li>Leveraging a large VLA chain-of-thought dataset and reinforcement learning to produce interpretable plans and robust real-world execution.</li>
                 </ul>
@@ -211,15 +380,17 @@
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">ArXiv Pre-print</div>
-                  <img src="images/nav-r1.png" alt="sym" width="100%">
+                  <div class="badge">arXiv Preprint</div>
+                  <video autoplay muted loop playsinline preload="metadata" aria-label="Nav-R1 demonstration video">
+                    <source src="video/navr1.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
               <div class="paper-box-text">
-                <p><a href="https://arxiv.org/pdf/2509.10884"><strong><font size="4">Nav-R1: Reasoning and Navigation in Embodied Scenes</font></strong></a></p>
-                <p>Qingxiang Liu$^\star$, <strong><u>Ting Huang</u></strong>$^\star$, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a>$^{\star\dagger}$, <a href="https://ha0tang.github.io/">Hao Tang</a>$^\ddagger$</p>
-                <p><a href="https://aigeeksgroup.github.io/Nav-R1/">project</a> | <a href="https://arxiv.org/abs/2509.10884">arXiv</a> | <a href="https://github.com/AIGeeksGroup/Nav-R1">code</a> | <a href="https://mp.weixin.qq.com/s/2huKYeV82Vv7Q8HfiXS5FQ">AIxiv</a></p>
-                <ul>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2509.10884">Nav-R1: Reasoning and Navigation in Embodied Scenes</a></p>
+                <p class="paper-authors">Qingxiang Liu<sup>★</sup>, <strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p class="paper-links"><a href="https://aigeeksgroup.github.io/Nav-R1/">Project</a><a href="https://arxiv.org/abs/2509.10884">Paper</a><a href="https://github.com/AIGeeksGroup/Nav-R1">Code</a><a href="https://mp.weixin.qq.com/s/2huKYeV82Vv7Q8HfiXS5FQ">Media</a></p>
+                <ul class="paper-summary">
                   <li>Nav-R1 unifies dialogue, reasoning, planning, and navigation in a single embodied foundation model.</li>
                   <li>Using Nav-CoT-110K and GRPO-based RL rewards plus a Fast-in-Slow paradigm to achieve coherent long-horizon reasoning with low-latency control in 3D environments.</li>
                 </ul>
@@ -228,16 +399,15 @@
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
-                  <div class="badge">ArXiv Pre-print</div>
-                  <img src="images/3d-r1.png" alt="sym" width="100%">
+                  <div class="badge">arXiv Preprint</div>
+                  <img src="images/3d-r1.webp" alt="3D-R1 method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="paper-box-text">
-                <p><a href="https://arxiv.org/pdf/2507.23478"><strong><font size="4">3D-R1: Enhancing Reasoning in 3D VLMs for Unified Scene Understanding</font></strong></a></p>
-                <p><a href="https://github.com/AIGeeksGroup/3D-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/3D-R1" alt="GitHub stars"></a><br>
-                <strong><u>Ting Huang</u></strong>$^\star$, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a>$^{\star\dagger}$, <a href="https://ha0tang.github.io/">Hao Tang</a>$^\ddagger$</p>
-                <p><a href="https://aigeeksgroup.github.io/3D-R1/">project</a> | <a href="https://arxiv.org/abs/2507.23478">arXiv</a> | <a href="https://github.com/AIGeeksGroup/3D-R1">code</a> | <a href="https://mp.weixin.qq.com/s/TgFY_hZcA7tKX163kztHXg">AIxiv</a> | <a href="https://x.com/_akhaliq/status/1952533689583181932">AK</a></p>
-                <ul>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2507.23478">3D-R1: Enhancing Reasoning in 3D VLMs for Unified Scene Understanding</a></p>
+                <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p class="paper-links"><a href="https://aigeeksgroup.github.io/3D-R1/">Project</a><a href="https://arxiv.org/abs/2507.23478">Paper</a><a href="https://github.com/AIGeeksGroup/3D-R1">Code</a><a href="https://mp.weixin.qq.com/s/TgFY_hZcA7tKX163kztHXg">Media</a></p>
+                <ul class="paper-summary">
                   <li>A pioneering 3D-VLM leverages reinforcement learning and dynamic view selection to enhance reasoning capabilities in 3D scene understanding.</li>
                 </ul>
               </div>
@@ -246,56 +416,89 @@
               <div class="paper-box-image">
                 <div>
                   <div class="badge">3DV 2026</div>
-                  <img src="images/3dcoca_main.png" alt="sym" width="100%">
+                  <img src="images/3dcoca_main.webp" alt="3D CoCa method overview" width="1200" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="paper-box-text">
-                <p><a href="https://arxiv.org/pdf/2504.09518"><strong><font size="4">3D CoCa: Contrastive Learners are 3D Captioners</font></strong></a></p>
-                <p><strong><font color="#dd0000">3DV 2026</font></strong> | <a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="GitHub stars"></a><br>
-                <strong><u>Ting Huang</u></strong>$^\star$, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a>$^{\star\dagger}$, Yemin Wang$^\star$, <a href="https://ha0tang.github.io/">Hao Tang</a>$^\ddagger$</p>
-                <p><a href="https://arxiv.org/abs/2504.09518">arXiv</a> | <a href="https://github.com/AIGeeksGroup/3DCoCa">code</a> | <a href="https://doi.org/10.1109/3dv69130.2026.00168">DOI</a></p>
-                <ul>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2504.09518">3D CoCa: Contrastive Learners are 3D Captioners</a></p>
+                <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Yemin Wang<sup>★</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p class="paper-links"><a href="https://arxiv.org/abs/2504.09518">Paper</a><a href="https://github.com/AIGeeksGroup/3DCoCa">Code</a><a href="https://doi.org/10.1109/3dv69130.2026.00168">DOI</a></p>
+                <ul class="paper-summary">
                   <li>Proposes <strong>3D CoCa</strong>, a unified framework that jointly performs contrastive 3D-text alignment and 3D caption generation within one architecture, instead of relying on a two-stage "proposal-then-caption" pipeline.</li>
                 </ul>
               </div>
             </div>
-            <h1 id="-awards-and-scholarships">🥇 Awards and Scholarships</h1>
-            <ul>
-              <li><em>Dec. 2024</em>. Award for the Scholarship for Outstanding Students of Master's Degrees.</li>
-              <li><em>Dec. 2023</em>. Award for the Scholarship for New Students of Master's Degrees.</li>
-              <li><em>Oct. 2020</em>. <strong>1st</strong> place in the ROBOCON National College Student Robot Competition.</li>
+            <h1 id="awards">Awards &amp; Scholarships</h1>
+            <ul class="section-list">
+              <li><em>Dec. 2024</em> — Outstanding Master's Student Scholarship.</li>
+              <li><em>Dec. 2023</em> — Graduate Entrance Scholarship.</li>
+              <li><em>Oct. 2020</em> — First Place, ROBOCON National College Student Robot Competition.</li>
             </ul>
-            <h1 id="-educations">📖 Education</h1>
-            <ul>
-              <li><em>Sep. 2023 - Jul. 2026</em>. M.S., Shanghai University of Engineering Science.</li>
-              <li><em>Sep. 2018 - Jun. 2022</em>. B.S., Hebei University of Engineering.</li>
+            <h1 id="education">Education</h1>
+            <ul class="section-list">
+              <li><em>Sep. 2023 – Jul. 2026</em> — M.S., Shanghai University of Engineering Science.</li>
+              <li><em>Sep. 2018 – Jun. 2022</em> — B.S., Hebei University of Engineering.</li>
             </ul>
-            <h1 id="-academic-services">😊 Academic Services</h1>
+            <h1 id="academic-services">Academic Services</h1>
             <p><strong>Conference Reviewer:</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">AAAI 2026</a>, <a href="https://aaai.org/conference/aaai/aaai-27/">AAAI 2027</a>, <a href="https://3dvconf.github.io/2026/">3DV 2026</a>, <a href="https://2026.ieee-icra.org/">ICRA 2026</a></p>
           </section>
         </div>
       </article>
     </div>
     <footer class="page__footer">
-      <p>Copyright © 2026 Ting Huang. All rights reserved. Last updated: <time id="last-updated" datetime="">2026-02-03</time></p>
+      <p>© 2026 Ting Huang. Last updated: <time datetime="2026-07-18">2026-07-18</time></p>
     </footer>
-    <script src="assets/js/vendor/jquery/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/main.min.js"></script>
     <script>
       (function () {
-        var lastUpdatedEl = document.getElementById('last-updated');
-        if (!lastUpdatedEl) return;
+        var nav = document.getElementById('site-nav');
+        var menuButton = nav ? nav.querySelector('button') : null;
+        var visibleLinks = nav ? nav.querySelector('.visible-links') : null;
+        var hiddenLinks = nav ? nav.querySelector('.hidden-links') : null;
+        var breakpoints = [];
 
-        var lastModified = new Date(document.lastModified);
-        if (isNaN(lastModified.getTime())) return;
+        function updateNavigation() {
+          if (!nav || !menuButton || !visibleLinks || !hiddenLinks) return;
+          var available = nav.clientWidth - (menuButton.classList.contains('hidden') ? 0 : menuButton.offsetWidth + 30);
 
-        var year = lastModified.getFullYear();
-        var month = String(lastModified.getMonth() + 1).padStart(2, '0');
-        var day = String(lastModified.getDate()).padStart(2, '0');
-        var formatted = year + '-' + month + '-' + day;
+          while (visibleLinks.scrollWidth > available && visibleLinks.lastElementChild) {
+            breakpoints.push(visibleLinks.scrollWidth);
+            hiddenLinks.prepend(visibleLinks.lastElementChild);
+            menuButton.classList.remove('hidden');
+            available = nav.clientWidth - menuButton.offsetWidth - 30;
+          }
 
-        lastUpdatedEl.textContent = formatted;
-        lastUpdatedEl.setAttribute('datetime', formatted);
+          while (breakpoints.length && available > breakpoints[breakpoints.length - 1] && hiddenLinks.firstElementChild) {
+            visibleLinks.append(hiddenLinks.firstElementChild);
+            breakpoints.pop();
+          }
+
+          if (!hiddenLinks.children.length) {
+            menuButton.classList.add('hidden');
+            hiddenLinks.classList.add('hidden');
+            menuButton.classList.remove('close');
+            menuButton.setAttribute('aria-expanded', 'false');
+          }
+        }
+
+        if (menuButton) {
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.addEventListener('click', function () {
+            var isOpen = hiddenLinks.classList.toggle('hidden') === false;
+            menuButton.classList.toggle('close', isOpen);
+            menuButton.setAttribute('aria-expanded', String(isOpen));
+          });
+          window.addEventListener('resize', updateNavigation);
+          updateNavigation();
+        }
+
+        document.querySelectorAll('a[href]').forEach(function (link) {
+          var url;
+          try { url = new URL(link.href, window.location.href); } catch (error) { return; }
+          if (url.origin !== window.location.origin && url.protocol !== 'mailto:') {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+        });
       })();
     </script>
   </body>
