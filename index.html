@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <style>
       :root {
-        --ink: #172033;
-        --muted: #687386;
-        --accent: #244f91;
+        --ink: #494e52;
+        --muted: #666;
+        --accent: #224b8d;
         --accent-soft: #edf3fb;
         --line: #e6eaf0;
         --surface: #f8fafc;
@@ -56,8 +56,14 @@
       }
       .intro {
         max-width: 760px;
-        color: #344054;
+        color: var(--ink);
         font-size: 1.04em;
+      }
+      .venue {
+        color: #dd0000;
+      }
+      .organization {
+        color: #3559b0;
       }
       .news-ticker {
         max-height: 12.5em;
@@ -136,7 +142,7 @@
         color: var(--accent);
       }
       .paper-authors {
-        color: #465267;
+        color: var(--ink);
         line-height: 1.55;
       }
       .paper-links {
@@ -219,7 +225,7 @@
       .research-focus {
         white-space: normal;
         margin-bottom: 1em;
-        color: #39465a;
+        color: var(--ink);
         font-weight: 600;
         line-height: 1.45;
       }
@@ -337,13 +343,13 @@
             <h1 id="news">🔥 News</h1>
             <div class="news-ticker" id="news-ticker">
             <ul id="news-list">
-              <li><span class="news-date">2026.06</span><span>🎉🎉 <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="OpenGround GitHub stars"></a> were accepted to <strong>ECCV 2026</strong>.</span></li>
-              <li><span class="news-date">2026.05</span><span>🎉🎉 Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> <a href="https://github.com/AIGeeksGroup/DontAbuseRL"><img src="https://badgen.net/github/stars/AIGeeksGroup/DontAbuseRL" alt="RL Position Paper GitHub stars"></a> was accepted to <strong>ICML 2026 Position Papers</strong>.</span></li>
-              <li><span class="news-date">2026.02</span><span>🎉🎉 <a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong>Expert Systems with Applications</strong>.</span></li>
-              <li><span class="news-date">2026.01</span><span>💼💼 I started a research internship at <strong>SRI-Robot</strong>, working on embodied AI.</span></li>
+              <li><span class="news-date">2026.06</span><span>🎉🎉 <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="OpenGround GitHub stars"></a> were accepted to <strong class="venue">ECCV 2026</strong>.</span></li>
+              <li><span class="news-date">2026.05</span><span>🎉🎉 Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> <a href="https://github.com/AIGeeksGroup/DontAbuseRL"><img src="https://badgen.net/github/stars/AIGeeksGroup/DontAbuseRL" alt="RL Position Paper GitHub stars"></a> was accepted to <strong class="venue">ICML 2026 Position Papers</strong>.</span></li>
+              <li><span class="news-date">2026.02</span><span>🎉🎉 <a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong class="venue">Expert Systems with Applications</strong>.</span></li>
+              <li><span class="news-date">2026.01</span><span>💼💼 I started a research internship at <strong class="organization">SRI-Robot</strong>, working on embodied AI.</span></li>
               <li><span class="news-date">2026.01</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2601.06496">3D CoCa v2</a> <a href="https://github.com/AIGeeksGroup/3DCoCav2"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCav2" alt="3D CoCa v2 GitHub stars"></a>, a generalizable 3D captioning framework.</span></li>
               <li><span class="news-date">2025.11</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, an embodied model for mobile robots.</span></li>
-              <li><span class="news-date">2025.11</span><span>🎉🎉 <a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> <a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="3D CoCa GitHub stars"></a> was accepted to <strong>3DV 2026</strong>.</span></li>
+              <li><span class="news-date">2025.11</span><span>🎉🎉 <a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> <a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="3D CoCa GitHub stars"></a> was accepted to <strong class="venue">3DV 2026</strong>.</span></li>
               <li><span class="news-date">2025.09</span><span>🐧🐧 I joined Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University as a visiting researcher.</span></li>
               <li><span class="news-date">2025.09</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2509.10884">Nav-R1</a> <a href="https://github.com/AIGeeksGroup/Nav-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/Nav-R1" alt="Nav-R1 GitHub stars"></a>, an embodied foundation model.</span></li>
               <li><span class="news-date">2025.08</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2507.23478">3D-R1</a> <a href="https://github.com/AIGeeksGroup/3D-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/3D-R1" alt="3D-R1 GitHub stars"></a>, an open-source generalist model for unified 3D scene understanding.</span></li>
