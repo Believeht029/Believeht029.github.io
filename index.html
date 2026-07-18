@@ -36,7 +36,7 @@
       .sidebar p,
       .sidebar li,
       .author__urls-wrapper {
-        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
       }
       body {
         color: var(--ink);
@@ -96,6 +96,12 @@
       }
       .paper-box .paper-box-image {
         position: relative;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .paper-box .paper-box-image > div {
+        width: 100%;
+        min-width: 0;
       }
       .paper-box .badge {
         z-index: 2;
@@ -103,12 +109,14 @@
       .paper-box .paper-box-image img,
       .paper-box .paper-box-image video {
         display: block;
+        max-width: 100%;
         width: 100%;
         aspect-ratio: 16 / 10;
         border: 1px solid var(--line);
         border-radius: 8px;
+        background: #fff;
         box-shadow: none;
-        object-fit: cover;
+        object-fit: contain;
       }
       .paper-box .paper-box-text {
         padding-left: 0;
@@ -157,7 +165,7 @@
         font-size: 0.94em;
       }
       .badge {
-        margin: 0.7em 0 0 -0.45em;
+        margin: 0.7em 0 0 0.7em;
         padding: 0.3em 0.72em;
         border-radius: 999px;
         background: var(--accent);
@@ -326,22 +334,22 @@
               <p>I am Ting Huang, a visiting researcher in Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University. I received my M.S. from Shanghai University of Engineering Science (SUES) and work on embodied AI.</p>
               <p>My research focuses on spatial intelligence and generalist embodied systems, including 3D vision-language and vision-language-action (VLA) models for mobile robots. My long-term goal is to build systems that understand and interact with the physical world. Outside research, I enjoy sports and music.</p>
             </div>
-            <h1 id="news">News</h1>
+            <h1 id="news">🔥 News</h1>
             <div class="news-ticker" id="news-ticker">
             <ul id="news-list">
-              <li><span class="news-date">2026.06</span><span><a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> were accepted to <strong>ECCV 2026</strong>.</span></li>
-              <li><span class="news-date">2026.05</span><span>Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> was accepted to <strong>ICML 2026 Position Papers</strong>.</span></li>
-              <li><span class="news-date">2026.02</span><span><a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong>Expert Systems with Applications</strong>.</span></li>
-              <li><span class="news-date">2026.01</span><span>I started a research internship at <strong>SRI-Robot</strong>, working on embodied AI.</span></li>
-              <li><span class="news-date">2026.01</span><span>We released <a href="https://arxiv.org/abs/2601.06496">3D CoCa v2</a>, a generalizable 3D captioning framework.</span></li>
-              <li><span class="news-date">2025.11</span><span>We released <a href="https://arxiv.org/abs/2511.17889">MobileVLA-R1</a>, an embodied model for mobile robots.</span></li>
-              <li><span class="news-date">2025.11</span><span><a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> was accepted to <strong>3DV 2026</strong>.</span></li>
-              <li><span class="news-date">2025.09</span><span>I joined Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University as a visiting researcher.</span></li>
-              <li><span class="news-date">2025.09</span><span>We released <a href="https://arxiv.org/abs/2509.10884">Nav-R1</a>, an embodied foundation model.</span></li>
-              <li><span class="news-date">2025.08</span><span>We released <a href="https://arxiv.org/abs/2507.23478">3D-R1</a>, an open-source generalist model for unified 3D scene understanding.</span></li>
+              <li><span class="news-date">2026.06</span><span>🎉🎉 <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="OpenGround GitHub stars"></a> were accepted to <strong>ECCV 2026</strong>.</span></li>
+              <li><span class="news-date">2026.05</span><span>🎉🎉 Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> <a href="https://github.com/AIGeeksGroup/DontAbuseRL"><img src="https://badgen.net/github/stars/AIGeeksGroup/DontAbuseRL" alt="RL Position Paper GitHub stars"></a> was accepted to <strong>ICML 2026 Position Papers</strong>.</span></li>
+              <li><span class="news-date">2026.02</span><span>🎉🎉 <a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong>Expert Systems with Applications</strong>.</span></li>
+              <li><span class="news-date">2026.01</span><span>💼💼 I started a research internship at <strong>SRI-Robot</strong>, working on embodied AI.</span></li>
+              <li><span class="news-date">2026.01</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2601.06496">3D CoCa v2</a> <a href="https://github.com/AIGeeksGroup/3DCoCav2"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCav2" alt="3D CoCa v2 GitHub stars"></a>, a generalizable 3D captioning framework.</span></li>
+              <li><span class="news-date">2025.11</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, an embodied model for mobile robots.</span></li>
+              <li><span class="news-date">2025.11</span><span>🎉🎉 <a href="https://doi.org/10.1109/3dv69130.2026.00168">3D CoCa</a> <a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="3D CoCa GitHub stars"></a> was accepted to <strong>3DV 2026</strong>.</span></li>
+              <li><span class="news-date">2025.09</span><span>🐧🐧 I joined Prof. <a href="https://ha0tang.github.io/">Hao Tang</a>'s group at Peking University as a visiting researcher.</span></li>
+              <li><span class="news-date">2025.09</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2509.10884">Nav-R1</a> <a href="https://github.com/AIGeeksGroup/Nav-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/Nav-R1" alt="Nav-R1 GitHub stars"></a>, an embodied foundation model.</span></li>
+              <li><span class="news-date">2025.08</span><span>🎉🎉 We released <a href="https://arxiv.org/abs/2507.23478">3D-R1</a> <a href="https://github.com/AIGeeksGroup/3D-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/3D-R1" alt="3D-R1 GitHub stars"></a>, an open-source generalist model for unified 3D scene understanding.</span></li>
             </ul>
             </div>
-            <h1 id="publications">Publications</h1>
+            <h1 id="publications">📝 Publications</h1>
             <div class="paper-box">
               <div class="paper-box-image">
                 <div>
@@ -370,6 +378,7 @@
               <div class="paper-box-text">
                 <p class="paper-title"><a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</a></p>
                 <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, Dongjian Li<sup>★</sup>, Rui Yang<sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Zida Yang, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p><a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a></p>
                 <p class="paper-links"><a href="https://aigeeksgroup.github.io/MobileVLA-R1/">Project</a><a href="https://arxiv.org/abs/2511.17889">Paper</a><a href="https://github.com/AIGeeksGroup/MobileVLA-R1">Code</a><a href="https://mp.weixin.qq.com/s/d9y8Rchx7ZHqfIEIwfmy4A">Media</a></p>
                 <ul class="paper-summary">
                   <li>MobileVLA-R1 bridges language-guided high-level reasoning and continuous low-level control for mobile robots.</li>
@@ -406,6 +415,7 @@
               <div class="paper-box-text">
                 <p class="paper-title"><a href="https://arxiv.org/pdf/2507.23478">3D-R1: Enhancing Reasoning in 3D VLMs for Unified Scene Understanding</a></p>
                 <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p><a href="https://github.com/AIGeeksGroup/3D-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/3D-R1" alt="3D-R1 GitHub stars"></a></p>
                 <p class="paper-links"><a href="https://aigeeksgroup.github.io/3D-R1/">Project</a><a href="https://arxiv.org/abs/2507.23478">Paper</a><a href="https://github.com/AIGeeksGroup/3D-R1">Code</a><a href="https://mp.weixin.qq.com/s/TgFY_hZcA7tKX163kztHXg">Media</a></p>
                 <ul class="paper-summary">
                   <li>A pioneering 3D-VLM leverages reinforcement learning and dynamic view selection to enhance reasoning capabilities in 3D scene understanding.</li>
@@ -422,24 +432,25 @@
               <div class="paper-box-text">
                 <p class="paper-title"><a href="https://arxiv.org/pdf/2504.09518">3D CoCa: Contrastive Learners are 3D Captioners</a></p>
                 <p class="paper-authors"><strong><u>Ting Huang</u></strong><sup>★</sup>, <a href="https://steve-zeyu-zhang.github.io/">Zeyu Zhang</a><sup>★†</sup>, Yemin Wang<sup>★</sup>, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>‡</sup></p>
+                <p><a href="https://github.com/AIGeeksGroup/3DCoCa"><img src="https://badgen.net/github/stars/AIGeeksGroup/3DCoCa" alt="3D CoCa GitHub stars"></a></p>
                 <p class="paper-links"><a href="https://arxiv.org/abs/2504.09518">Paper</a><a href="https://github.com/AIGeeksGroup/3DCoCa">Code</a><a href="https://doi.org/10.1109/3dv69130.2026.00168">DOI</a></p>
                 <ul class="paper-summary">
                   <li>Proposes <strong>3D CoCa</strong>, a unified framework that jointly performs contrastive 3D-text alignment and 3D caption generation within one architecture, instead of relying on a two-stage "proposal-then-caption" pipeline.</li>
                 </ul>
               </div>
             </div>
-            <h1 id="awards">Awards &amp; Scholarships</h1>
+            <h1 id="awards">🥇 Awards &amp; Scholarships</h1>
             <ul class="section-list">
               <li><em>Dec. 2024</em> — Outstanding Master's Student Scholarship.</li>
               <li><em>Dec. 2023</em> — Graduate Entrance Scholarship.</li>
               <li><em>Oct. 2020</em> — First Place, ROBOCON National College Student Robot Competition.</li>
             </ul>
-            <h1 id="education">Education</h1>
+            <h1 id="education">📖 Education</h1>
             <ul class="section-list">
               <li><em>Sep. 2023 – Jul. 2026</em> — M.S., Shanghai University of Engineering Science.</li>
               <li><em>Sep. 2018 – Jun. 2022</em> — B.S., Hebei University of Engineering.</li>
             </ul>
-            <h1 id="academic-services">Academic Services</h1>
+            <h1 id="academic-services">😊 Academic Services</h1>
             <p><strong>Conference Reviewer:</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">AAAI 2026</a>, <a href="https://aaai.org/conference/aaai/aaai-27/">AAAI 2027</a>, <a href="https://3dvconf.github.io/2026/">3DV 2026</a>, <a href="https://2026.ieee-icra.org/">ICRA 2026</a></p>
           </section>
         </div>
