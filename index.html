@@ -232,6 +232,72 @@
         color: var(--muted);
         font-size: 0.94em;
       }
+      .talk-list {
+        display: grid;
+        gap: 0.9em;
+      }
+      .talk-card {
+        display: grid;
+        grid-template-columns: 5.25em minmax(0, 1fr);
+        gap: 1.2em;
+        padding: 1.15em;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.72);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .talk-card:hover,
+      .talk-card:focus-within {
+        border-color: #ccd7e6;
+        box-shadow: 0 8px 24px rgba(37, 50, 70, 0.06);
+      }
+      .talk-date {
+        display: flex;
+        min-height: 5.25em;
+        padding: 0.55em 0.35em;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.78em;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        line-height: 1.15;
+        text-transform: uppercase;
+      }
+      .talk-date strong {
+        margin: 0.08em 0;
+        font-size: 2em;
+        letter-spacing: -0.04em;
+      }
+      .talk-kicker {
+        color: var(--accent);
+        font-size: 0.74em;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .talk-title {
+        margin: 0.25em 0 0.35em;
+        font-size: 1.08em;
+        line-height: 1.4;
+      }
+      .talk-title a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .talk-title a:hover {
+        color: var(--accent);
+      }
+      .talk-meta {
+        margin: 0;
+        color: var(--muted);
+      }
+      .talk-card .paper-links {
+        margin-bottom: 0;
+      }
       .badge {
         margin: 0.7em 0 0 0.7em;
         padding: 0.3em 0.72em;
@@ -372,6 +438,14 @@
           gap: 1em;
           padding: 1em 0;
         }
+        .talk-card {
+          grid-template-columns: 4.4em minmax(0, 1fr);
+          gap: 0.9em;
+          padding: 0.95em;
+        }
+        .talk-date {
+          min-height: 4.4em;
+        }
         .author__urls_sm a {
           display: inline-flex;
           min-width: 42px;
@@ -410,6 +484,7 @@
               <li class="masthead__menu-item"><a href="#about-me">About Me</a></li>
               <li class="masthead__menu-item"><a href="#news">News</a></li>
               <li class="masthead__menu-item"><a href="#publications">Publications</a></li>
+              <li class="masthead__menu-item"><a href="#talks">Talks</a></li>
               <li class="masthead__menu-item"><a href="#awards">Awards</a></li>
               <li class="masthead__menu-item"><a href="#education">Education</a></li>
               <li class="masthead__menu-item"><a href="#academic-services">Academic Services</a></li>
@@ -467,7 +542,7 @@
             <h1 id="news">🔥 News</h1>
             <div class="news-ticker" id="news-ticker">
             <ul id="news-list">
-              <li><span class="news-date">2026.06</span><span>🎉🎉 <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, ConsiSpace, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="OpenGround GitHub stars"></a> were accepted to <strong class="venue">ECCV 2026</strong>.</span></li>
+              <li><span class="news-date">2026.06</span><span>🎉🎉 <a href="https://arxiv.org/pdf/2511.17889">MobileVLA-R1</a> <a href="https://github.com/AIGeeksGroup/MobileVLA-R1"><img src="https://badgen.net/github/stars/AIGeeksGroup/MobileVLA-R1" alt="MobileVLA-R1 GitHub stars"></a>, <a href="https://arxiv.org/pdf/2607.17599">ConsiSpace</a> <a href="https://github.com/Believeht029/ConsiSpace"><img src="https://badgen.net/github/stars/Believeht029/ConsiSpace" alt="ConsiSpace GitHub stars"></a>, and <a href="https://arxiv.org/pdf/2512.23020">OpenGround</a> <a href="https://github.com/why-102/openground"><img src="https://badgen.net/github/stars/why-102/openground" alt="OpenGround GitHub stars"></a> were accepted to <strong class="venue">ECCV 2026</strong>.</span></li>
               <li><span class="news-date">2026.05</span><span>🎉🎉 Our <a href="https://openreview.net/pdf?id=Q83EEeC6ce">RL Position Paper</a> <a href="https://github.com/AIGeeksGroup/DontAbuseRL"><img src="https://badgen.net/github/stars/AIGeeksGroup/DontAbuseRL" alt="RL Position Paper GitHub stars"></a> was accepted to <strong class="venue">ICML 2026 Position Papers</strong>.</span></li>
               <li><span class="news-date">2026.02</span><span>🎉🎉 <a href="https://doi.org/10.1016/j.eswa.2026.131676">Multigranularity-3DQA</a> was accepted to <strong class="venue">Expert Systems with Applications</strong>.</span></li>
               <li><span class="news-date">2026.01</span><span>💼💼 I started a research internship at <strong class="organization">SRI-Robot</strong>, working on embodied AI.</span></li>
@@ -515,6 +590,25 @@
                 <ul class="paper-summary">
                   <li>MobileVLA-R1 bridges language-guided high-level reasoning and continuous low-level control for mobile robots.</li>
                   <li>Leveraging a large VLA chain-of-thought dataset and reinforcement learning to produce interpretable plans and robust real-world execution.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="paper-box paper-box--selected">
+              <div class="paper-box-image">
+                <div>
+                  <div class="badge badge--venue">ECCV 2026</div>
+                  <img src="images/consispace.png" alt="ConsiSpace method overview" width="1200" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <div class="paper-box-text">
+                <div class="paper-kicker">Selected Publication</div>
+                <p class="paper-title"><a href="https://arxiv.org/pdf/2607.17599">ConsiSpace: Learning Geometric Consistency Matters for Video Spatial Reasoning</a></p>
+                <p class="paper-authors"><strong><u>Ting Huang</u></strong>, Zhenyu Zhang</a><sup>†</sup>, Wenyuan Huang, Jian Yang, <a href="https://ha0tang.github.io/">Hao Tang</a><sup>†</sup></p>
+                <p><a href="https://github.com/Believeht029/ConsiSpace"><img src="https://badgen.net/github/stars/Believeht029/ConsiSpace" alt="ConsiSpace GitHub stars"></a></p>
+                <p class="paper-links"><a href="https://believeht029.github.io/ConsiSpace/">Project</a><a href="https://arxiv.org/abs/2607.17599">Paper</a><a href="https://github.com/Believeht029/ConsiSpace">Code</a></p>
+                <ul class="paper-summary">
+                  <li>Proposes <strong>ConsiSpace</strong>, a geometry-consistency-aware framework that compactly organizes implicit visual evidence and explicit geometric cues for reliable video spatial reasoning.</li>
+                  <li>Introduces consistency-based self-supervised reinforcement learning to improve cross-view stability, achieving a <strong>12.6-point average improvement</strong> over the strongest baselines across three benchmarks.</li>
                 </ul>
               </div>
             </div>
@@ -573,6 +667,22 @@
               </div>
             </div>
             </div>
+            <h1 id="talks">🎙️ Talks</h1>
+            <div class="talk-list">
+              <article class="talk-card">
+                <time class="talk-date" datetime="2026-08-20" aria-label="August 20, 2026">
+                  <span>Aug</span>
+                  <strong>20</strong>
+                  <span>2026</span>
+                </time>
+                <div>
+                  <div class="talk-kicker">BAAI Qingyuan · ECCV 2026 Pre-Talk</div>
+                  <h2 class="talk-title"><a href="https://event.baai.ac.cn/activities/1076">MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</a></h2>
+                  <p class="talk-meta">Online presentation hosted by the Beijing Academy of Artificial Intelligence (BAAI).</p>
+                  <p class="paper-links"><a href="https://event.baai.ac.cn/activities/1076">Event &amp; Replay</a><a href="assets/baai_0820.pdf">Slides (PDF)</a></p>
+                </div>
+              </article>
+            </div>
             <h1 id="awards">🥇 Awards <span class="ampersand">&amp;</span> Scholarships</h1>
             <ul class="section-list">
               <li><em>Dec. 2024</em> — Outstanding Master's Student Scholarship.</li>
@@ -585,13 +695,13 @@
               <li><em>Sep. 2018 – Jun. 2022</em> — B.S., Hebei University of Engineering.</li>
             </ul>
             <h1 id="academic-services">😊 Academic Services</h1>
-            <p><strong>Conference Reviewer:</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">AAAI 2026</a>, <a href="https://aaai.org/conference/aaai/aaai-27/">AAAI 2027</a>, <a href="https://3dvconf.github.io/2026/">3DV 2026</a>, <a href="https://2026.ieee-icra.org/">ICRA 2026</a></p>
+            <p><strong>Conference Reviewer:</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">AAAI 2026</a>, <a href="https://aaai.org/conference/aaai/aaai-27/">AAAI 2027</a>, <a href="https://3dvconf.github.io/2026/">3DV 2026</a>, <a href="https://3dvconf.github.io/2027/">3DV 2027</a>, <a href="https://2026.ieee-icra.org/">ICRA 2026</a></p>
           </section>
         </div>
       </article>
     </div>
     <footer class="page__footer">
-      <p>© 2026 Ting Huang. Last updated: <time datetime="2026-07-18">2026-07-18</time></p>
+      <p>© 2026 Ting Huang. Last updated: <time datetime="2026-08-22">2026-08-22</time></p>
     </footer>
     <script>
       (function () {
